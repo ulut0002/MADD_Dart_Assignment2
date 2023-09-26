@@ -1,10 +1,6 @@
 import 'dart:io';
 import 'dart:math';
 
-int calculate() {
-  return 6 * 7;
-}
-
 class Lucky {
   static int _minValue = 0;
   static int _maxValue = 0;
@@ -18,11 +14,13 @@ class Lucky {
       if (key == "MIN") {
         try {
           _minValue = int.parse(value);
+          // ignore: empty_catches
         } catch (e) {}
       }
       if (key == "MAX") {
         try {
           _maxValue = int.parse(value);
+          // ignore: empty_catches
         } catch (e) {}
       }
     });
@@ -33,6 +31,7 @@ class Lucky {
     try {
       randomValue = Random().nextInt(_maxValue) + _minValue;
     } catch (e) {
+      print(e.toString());
       randomValue = 0;
     }
     return randomValue;
